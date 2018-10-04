@@ -1,0 +1,8 @@
+{
+  "name": "skeleton-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/frandm182/MERN-Full-Stack.git",
+  "author": "<fjdiaz@stratio.com>",
+  "license": "MIT"
+}
