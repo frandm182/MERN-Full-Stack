@@ -16,7 +16,7 @@ const create = (req, res, next) => {
     });
 }
 
-const list = (req, res) => { 
+const list = (req, res) => {
     User.find((err, users) => {
         if (err) {
             return res.status(400).json({
@@ -25,8 +25,19 @@ const list = (req, res) => {
         }
         res.json(users);
     }).select('name email updated created');
- }
-const userByID = (req, res, next, id) => {  }
+}
+
+const userByID = (req, res, next, id) => {
+    User.findById(id).exec((err, user) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'User not found'
+            });
+        }
+        req.profile = user;
+        next();
+    });
+}
 const read = (req, res) => {  }
 const update = (req, res, next) => {  }
 const remove = (req, res, next) => {  }
