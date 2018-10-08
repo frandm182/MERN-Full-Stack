@@ -16,7 +16,16 @@ const create = (req, res, next) => {
     });
 }
 
-const list = (req, res) => { }
+const list = (req, res) => { 
+    User.find((err, users) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            });
+        }
+        res.json(users);
+    }).select('name email updated created');
+ }
 const userByID = (req, res, next, id) => {  }
 const read = (req, res) => {  }
 const update = (req, res, next) => {  }
