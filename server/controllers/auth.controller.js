@@ -32,7 +32,12 @@ const signin = (req, res) => {
         });
     });
 }
-const signout = (req, res) => {  }
+const signout = (req, res) => {
+    res.clearCookie('t');
+    return res.status(200).json({
+        message: 'signed out'
+    });
+}
 const requireSignin = '' 
 const hasAuthorization = (req, res) => {  }
 
