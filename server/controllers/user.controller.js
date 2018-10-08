@@ -58,6 +58,18 @@ const update = (req, res, next) => {
         res.json(user);
     })
 }
-const remove = (req, res, next) => {  }
+const remove = (req, res, next) => {
+    let user = req.profile;
+    user.remove((err, deletedUser) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            });
+        }
+        deletedUser.hashed_password = undefined;
+        deletedUser.salt = undefined;
+        res.json(deletedUser);
+    })
+}
 
 export default { create, userByID, read, list, remove, update }
