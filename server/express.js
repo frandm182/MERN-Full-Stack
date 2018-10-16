@@ -8,8 +8,10 @@ import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
 import Template from './../template'
 
-const app = express();
+import devBundle from './devBundle';
 
+const app = express();
+devBundle.compile(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
